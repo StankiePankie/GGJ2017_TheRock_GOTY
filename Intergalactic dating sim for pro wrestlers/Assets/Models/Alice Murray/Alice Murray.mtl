@@ -1,0 +1,73 @@
+# 
+# 
+newmtl Alice_Murray_dress
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd Texture\\Alice_Murray_dress.tga
+map_Bump Texture\\Alice_Murray_dress_bump.tga
+
+
+newmtl Alice_Murray_eyes
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Texture\\Alice_Murray_skin.tga
+map_Bump Texture\\Alice_Murray_skin_bump.tga
+
+
+newmtl Alice_Murray_hair
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd Texture\\Alice_Murray_hair.tga
+map_d Texture\\Alice_Murray_hair.tga
+
+
+newmtl Alice_Murray_lashes
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd Texture\\Alice_Murray_lashes.tga
+map_d Texture\\Alice_Murray_lashes.tga
+
+
+newmtl Alice_Murray_legs
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd Texture\\Alice_Murray_legs.tga
+map_Bump Texture\\Alice_Murray_legs_bump.tga
+
+
+newmtl Alice_Murray_skin_Alice_Murray_skin_bum
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd Texture\Alice_Murray_skin_bump.tga
+
+
