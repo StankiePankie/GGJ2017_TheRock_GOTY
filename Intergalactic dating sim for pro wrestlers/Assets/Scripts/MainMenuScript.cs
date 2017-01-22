@@ -22,7 +22,7 @@ public class MainMenuScript : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("Start the game!");
-        SceneManager.LoadScene("RoundOne");
+        SceneManager.LoadScene("NoticeMePark");
     }
 
     public void QuitGame()
