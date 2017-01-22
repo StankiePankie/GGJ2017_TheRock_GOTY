@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class WaifuPaths : MonoBehaviour {
 
-    public struct path
+    public class path
     {
-        public int[] m_path;
+        public path()
+        {
+            m_path = new int[6];
+            for (int i = 0; i < 6; ++i)
+            {
+                m_path[i] = new int();
+            }
+        }
+        public int[] m_path;// = new int[6];
     }
 
-    struct path_node
+    public class path_node
     {
+        public path_node()
+        {
+            total_paths = 0;
+            m_paths = new path[3];
+            for (int i = 0; i < 3; ++i)
+            {
+                m_paths[i] = new path();
+            }
+        }
         public int total_paths;
-        public path[] m_paths;
+        public path[] m_paths;// = new path[3];
     }
 
 
@@ -23,16 +40,19 @@ public class WaifuPaths : MonoBehaviour {
     private int current_index;
     private int current_point;
     private UnityEngine.AI.NavMeshAgent agent;
-    private path_node[] all_paths;
+    private path_node[] all_paths = new path_node[31];
     public path current_path;
 
 	// Use this for initialization
 	void Start () {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.destination = starting_point.position;
-        patrol = false;
+        //patrol = false;
         #region paths
-
+        for (int i = 0; i < 31; ++i)
+        {
+            all_paths[i] = new path_node();
+        }
         // 1-2, 1-28, 1-29
         all_paths[1].total_paths = 3;
         all_paths[1].m_paths[0].m_path[0] = 1;
