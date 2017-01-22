@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-	public float rayDistance;
+	//public float rayDistance;
 	List<Waifu> nearby;
 
 	// Use this for initialization
