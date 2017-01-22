@@ -43,6 +43,8 @@ public class Waifu : MonoBehaviour
 	//react?
 	public void React(int waveType)
 	{
+		gameObject.transform.LookAt(GameObject.Find("Rock").transform);
+
 		//does waveType match currWave? Y: seduced+ N: seduced-
 		if (waveType == wavePattern[currWave])
 		{
