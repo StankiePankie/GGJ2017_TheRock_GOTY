@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Waifu : MonoBehaviour
 {
@@ -15,11 +16,16 @@ public class Waifu : MonoBehaviour
 
 	public float waveTimer;
 
+	WaifuPaths myPaths;
+
 	// Use this for initialization
 	void Start()
 	{
 		//not seduced yo
 		seductionRating = 0.0f;
+		myPaths = gameObject.GetComponent<WaifuPaths>();
+		if (myPaths == null)
+			Debug.Log("THIS WAIFU NEEDS PATHS SCRIPT!");
 	}
 
 	// Update is called once per frame
@@ -30,6 +36,11 @@ public class Waifu : MonoBehaviour
 			waveTimer -= Time.deltaTime;
 			if (waveTimer <= 0.0f)
 			{
+				if (myPaths != null)
+				{
+					myPaths.patrol = true;
+					gameObject.GetComponent<NavMeshAgent>().Resume();
+				}
 				seductionRating = 0.0f;
 				waveTimer = 0.0f;
 
@@ -43,6 +54,12 @@ public class Waifu : MonoBehaviour
 	//react?
 	public void React(int waveType)
 	{
+		if (myPaths != null)
+		{
+			myPaths.patrol = false;
+			gameObject.GetComponent<NavMeshAgent>().Stop();
+		}
+
 		gameObject.transform.LookAt(GameObject.Find("Rock").transform);
 
 		//does waveType match currWave? Y: seduced+ N: seduced-

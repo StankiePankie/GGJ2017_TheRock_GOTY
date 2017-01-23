@@ -10,11 +10,13 @@ public class Player : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+		nearby = new List<Waifu>();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
+		
 		//Sam: dummy stuff for now
 		if (Input.GetKeyDown(KeyCode.Alpha1))
 		{
@@ -42,9 +44,12 @@ public class Player : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		Debug.Log("Collision Detected!");
+
 		Waifu waifu = other.gameObject.GetComponent<Waifu>();
 		if(waifu != null)
 		{
+			Debug.Log("Waifu found!");
 			nearby.Add(waifu);
 		}
 	}
@@ -55,7 +60,10 @@ public class Player : MonoBehaviour
 		if(waifu != null)
 		{
 			if (nearby.Contains(waifu))
+			{
 				nearby.Remove(waifu);
+				Debug.Log("Waifu lost!");
+			}
 		}
 	}
 
