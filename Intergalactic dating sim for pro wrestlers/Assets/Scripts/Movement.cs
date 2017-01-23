@@ -7,6 +7,8 @@ public class Movement : MonoBehaviour
     public float speed = 5.0f;
     public GameObject camLock;
     Quaternion origRotation;
+    public bool isWaving = false;
+    Animator anim;
 
 	// Use this for initialization
 	void Start ()
@@ -16,6 +18,8 @@ public class Movement : MonoBehaviour
             camLock = GameObject.Find("Camera Lock");
         }
         origRotation = camLock.transform.rotation;
+
+        anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -27,11 +31,19 @@ public class Movement : MonoBehaviour
         Vector3 movement = new Vector3(h, 0.0f, v);
         if (v != 0.0f || h != 0.0f)
         {
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Walking"))
+                anim.Play("Walking");
             transform.rotation = Quaternion.LookRotation(movement);
+        }
+        else if (isWaving)
+        {
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Waving"))
+                anim.Play("Waving");
         }
         else
         {
-            GetComponent<Animator>().Play("Idle");
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                anim.Play("Idle");
         }
 
         transform.Translate(movement * speed * Time.deltaTime, Space.World);

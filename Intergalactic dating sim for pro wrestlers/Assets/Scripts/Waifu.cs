@@ -18,6 +18,8 @@ public class Waifu : MonoBehaviour
 
 	WaifuPaths myPaths;
 
+    public GameObject panties;
+
 	// Use this for initialization
 	void Start()
 	{
@@ -72,6 +74,9 @@ public class Waifu : MonoBehaviour
 			waveTimer = 5.0f; //arbitrary number
 
 			Debug.Log("Hey Sexy! Seduced: " + seductionRating.ToString());
+
+            GameObject drop = Instantiate(panties, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+            Destroy(drop, 1.0f);
 		}
 		else
 		{

@@ -6,11 +6,14 @@ public class Player : MonoBehaviour
 {
 	//public float rayDistance;
 	List<Waifu> nearby;
+    public GameObject lovePower;
+    Movement move;
 
 	// Use this for initialization
 	void Start()
 	{
 		nearby = new List<Waifu>();
+        move = GetComponent<Movement>();
 	}
 
 	// Update is called once per frame
@@ -21,22 +24,34 @@ public class Player : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Alpha1))
 		{
 			Seduce(1);
+            move.isWaving = true;
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha2))
 		{
 			Seduce(2);
+            move.isWaving = true;
 		}
+        if (Input.GetKeyUp(KeyCode.Alpha1) && Input.GetKeyUp(KeyCode.Alpha2))
+        {
+            move.isWaving = false;
+        }
 
 	}
 
 	void Seduce(int waveType)
 	{
+        GetComponent<Animator>().Play("Waving");
 		foreach (Waifu babe in nearby)
 		{
 			Vector3 rockFwd = transform.TransformDirection(Vector3.forward);
 			Vector3 babeFwd = babe.gameObject.transform.TransformDirection(Vector3.forward);
 			if (Vector3.Dot(rockFwd, babeFwd) < 0.0f)
-				babe.React(waveType);
+            {
+                Object powerOfLove = Instantiate(lovePower, new Vector3(transform.position.x, transform.position.y + 2.0f, transform.position.z), Quaternion.identity);
+                Destroy(powerOfLove, 1.0f);
+
+                babe.React(waveType);
+            }
 		}
 		//Waifu mimi = GameObject.Find("Mimi").GetComponent<Waifu>();
 		//mimi.React(waveType);
